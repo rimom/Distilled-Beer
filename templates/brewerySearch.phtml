@@ -1,0 +1,17 @@
+<section class="SearchResult">
+    <h2 class="searchResults">Search Results for Breweries</h2>
+    <ul class="SearchResultList">
+        <?php foreach ($data as $brewery): ?>
+            <h2><?php echo $brewery['name']; ?></h2>
+            <li class="SearchResultItem">
+                <div class="SearchResultContent">
+                    <p class="BreweryDescResult"><?php echo $brewery['description']; ?><p>
+                        <a class="MoreAboutBTNSmall btn" href="/about/<?php echo $brewery['id']; ?>">Read More about
+                            this Brewery</a>
+                        <a class="MoreAboutBTNSmall btn" href="/more/<?php echo $brewery['id']; ?>">See more beers from
+                            this brewery</a>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</section>

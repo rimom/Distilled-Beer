@@ -1,0 +1,21 @@
+{
+    "require": {
+        "php": "7.2",
+        "slim/slim": "^3.1",
+        "slim/php-view": "^2.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Models\\": "src/Models/",
+            "Controllers\\":"src/Controllers",
+            "Contracts\\":"src/Contracts"
+        }
+    },
+    "config": {
+        "process-timeout" : 0
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public"
+    }
+
+}

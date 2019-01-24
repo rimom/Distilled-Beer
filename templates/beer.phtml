@@ -1,0 +1,22 @@
+<section class="SearchResult">
+    <h2>Other beers from <?php echo $_SESSION['breweryName']; ?></h2>
+    <ul class="SearchResultList">
+        <?php foreach ($beers as $beer): ?>
+            <li class="SearchResultItem">
+                <div class="SearchResultIMG">
+                    <img src="<?php echo $beer['icon'] ?>" alt="Beer Image">
+                </div>
+                <div class="SearchResultContent">
+                    <?php
+                    echo "<h3>" . $beer['name'] . "</h3>";
+                    echo "<p>" . $beer['description'] . "<p>";
+                    echo <<<HTML
+                        <a href="/beerDetail/{$beer['id']}" class="MoreAboutBTNSmall btn">Read More</a>
+HTML;
+                    ?>
+                    </p>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</section>

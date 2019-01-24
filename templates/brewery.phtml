@@ -1,0 +1,18 @@
+<section class="SearchResult">
+    <h2><?php echo $data['name']; ?></h2>
+    <ul class="SearchResultList">
+        <li class="SearchResultItem">
+            <div class="SearchResultContent">
+                <p class="BreweryDesc"><?php echo $data['description'] ?><p>
+                    <a class="MoreAboutBTNSmall btn" href="/more/<?php echo $data['id'] ?>">See more beers from this
+                        brewery</a>
+                    <?php
+                    if (isset($data['website'])): ?>
+                <p class='BreweryWebsite'>More Information: <a href='<?php echo $data['website'] ?>'
+                                                               target='_blank'><?php echo strtolower($data['website']) ?></a>
+                </p>
+            <?php endif; ?>
+            </div>
+        </li>
+    </ul>
+</section>

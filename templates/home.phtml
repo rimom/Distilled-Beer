@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!--For mobile screen-->
+    <title>Distilled Beer</title>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<header class="MainHeader">
+    <h1 class="MainTitle">Distilled Beer Application</h1>
+</header>
+<?php
+if (isset($id)) {
+    $_SESSION['id'] = $id;
+}
+if (isset($name)) {
+    $_SESSION['name'] = $name;
+}
+if (isset($desc)) {
+    $_SESSION['desc'] = $desc;
+}
+if (isset($image)) {
+    $_SESSION['image'] = $image;
+}
+if (isset($breweryId)) {
+    $_SESSION['breweryId'] = $breweryId;
+}
+if (isset($breweryName)) {
+    $_SESSION['breweryName'] = $breweryName;
+}
+?>
+<main class="MainContent">
+    <!----------Ramdom Section---------->
+    <Section class="RamdomBeerSection">
+        <h2><?php echo $_SESSION['name'] ?></h2>
+        <div class="containerMainBeer">
+            <div class="ImageSection">
+                <img src="<?php echo $_SESSION['image'] ?>" alt="Beer Image" class="ImageSectionBeer">
+            </div>
+            <article class="BeerInfoSection">
+                <p class="ArticleText"><?php echo $_SESSION['desc'] ?></p>
+            </article>
+            <div class="ButtonsSection">
+                <a href="/" class="btn">Random Beer</a>
+                <a href="/about/<?php echo $_SESSION['breweryId'] ?>" class="btn">About this Brewery</a>
+                <a href="/more/<?php echo $_SESSION['breweryId'] ?>" class="btn">More from this brewery</a>
+            </div>
+        </div>
+    </Section>
+    <section class="Search">
+        <!----------Search Form---------->
+        <section class="SearchFormSection">
+            <h2>Search</h2>
+            <form method="get" action="/search" class="SearchForm">
+                <input type="search" placeholder="Search" class="SearchField" name="search" minlength="3" maxlength="50"
+                       required>
+                <div class="radioContainer">
+                    <fieldset>
+                        <input id="radioBeer" type="radio" name="searchRadio" value="beer" checked>
+                        <label for="radioBeer">Beer</label>
+                        <input id="radioBrewery" type="radio" name="searchRadio" value="brewery">
+                        <label for="radioBrewery">Brewery</label>
+                    </fieldset>
+                </div>
+                <input type="submit" class="SearchBTN btn" value="Search">
+            </form>
+        </section>
+        <!----------Search Results---------->
+        <?php if (isset($showBeers) and $showBeers === true and !isset($msg)) {
+            include 'beer.phtml';
+        }
+        if (isset($showBrewery) and $showBrewery === true and !isset($msg)) {
+            include 'brewery.phtml';
+        }
+        if (isset($showBreweryResults) and !isset($msg)) {
+            include 'brewerySearch.phtml';
+        }
+        if (isset($showBeerResults) and !isset($msg)) {
+            include 'beerSearch.phtml';
+        }
+        if (isset($msg)):?>
+            <section class="SearchResult">
+                <h2><?php echo $msg; ?></h2>
+            </section>
+        <?php endif; ?>
+</main>
+<footer class="Footer">
+    <h4>- distilled beer © 2018 -</h4>
+</footer>
+</body>
+</html>
